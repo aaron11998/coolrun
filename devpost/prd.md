@@ -1,6 +1,6 @@
 ---
 doc: prd
-status: draft
+status: approved
 ---
 <!-- Drafted by the coding agent. Prajwal: review, edit, then set status: approved. -->
 

@@ -1,6 +1,6 @@
 ---
 doc: scope
-status: draft
+status: approved
 ---
 <!-- Drafted by the coding agent from Prajwal's brief (useful, judge-friendly, no paid APIs).
      Prajwal: read, edit anything that isn't yours, then change status to approved. -->
