@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CoolRun — find the safest time to run in the heat</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏃</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">❄︎</span> CoolRun</div>
+  <div class="tag">Heat-safe run windows for hot cities</div>
+</header>
+<main>
+  <section class="hero" id="hero">
+    <h1>When is it <em>safe</em> to run?</h1>
+    <p>CoolRun reads the next 48 hours of feels-like heat, humidity, UV and wind — then picks the best window for <b>your</b> run.</p>
+  </section>
+
+  <section class="panel controls">
+    <div class="field city">
+      <label for="city">City</label>
+      <div class="cityrow">
+        <input id="city" autocomplete="off" placeholder="Search a city, e.g. Dubai">
+        <button id="locate" class="ghost" title="Use my location">📍</button>
+      </div>
+      <ul id="suggest" class="suggest" hidden></ul>
+      <button id="demo" class="link">or try offline demo data (Dubai)</button>
+    </div>
+    <div class="field">
+      <label for="len">Run length <output id="lenOut">45 min</output></label>
+      <input type="range" id="len" min="20" max="120" step="5" value="45">
+    </div>
+    <div class="field">
+      <label>Heat tolerance</label>
+      <div class="seg" id="tolerance">
+        <button data-v="sensitive">Heat-sensitive</button><button data-v="normal" class="on">Normal</button><button data-v="acclimatized">Acclimatized</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Effort</label>
+      <div class="seg" id="effort">
+        <button data-v="easy" class="on">Easy</button><button data-v="tempo">Tempo</button><button data-v="hard">Hard</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="status" class="status" hidden></section>
+
+  <section id="results" class="results" hidden>
+    <div class="best card" id="best"></div>
+    <div class="alts" id="alts"></div>
+    <div class="card ribbonCard">
+      <div class="ribbonHead"><h3>Next 48 hours</h3><div class="legend" id="legend"></div></div>
+      <div class="ribbon" id="ribbon"></div>
+      <div class="detail" id="detail">Hover or tap an hour for details.</div>
+    </div>
+  </section>
+</main>
+<footer>Forecast data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> (CC BY 4.0). CoolRun gives guidance, not medical advice — listen to your body.</footer>
+<script type="module" src="main.js"></script>
+</body>
+</html>
