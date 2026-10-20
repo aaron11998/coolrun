@@ -31,7 +31,7 @@ export function scoreHour(h, s) {
 
 export function scoreHours(hours, s) { return hours.map(h => ({ ...h, ...scoreHour(h, s) })); }
 
-/** Find best + up to 2 non-overlapping alternative windows of `minutes` length starting after `now`. */
+/** Find best + up to 2 alternatives (≥3 h apart, alternative windows of `minutes` length starting after `now`. */
 export function findWindows(scored, minutes, now, count = 3) {
   if (!scored.length) return [];
   const t0 = scored[0].time.getTime();
@@ -51,7 +51,8 @@ export function findWindows(scored, minutes, now, count = 3) {
   cands.sort((x, y) => x.band - y.band || x.eff - y.eff || x.start - y.start);
   const picked = [];
   for (const c of cands) {
-    if (picked.every(p => c.end <= p.start || c.start >= p.end)) picked.push(c);
+    const gap = 3 * H; // alternatives should be genuinely different sessions
+    if (picked.every(p => c.end.getTime() + gap <= p.start.getTime() || c.start.getTime() >= p.end.getTime() + gap)) picked.push(c);
     if (picked.length === count) break;
   }
   return picked;

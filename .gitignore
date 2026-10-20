@@ -6,3 +6,4 @@ node_modules/
 /video/frames/
 /video/tmp/
 *.webm
+node_modules
